@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title>AliKassa widget payment</title>
+
+    <script type="text/javascript">
+        function alikassaCallback(status) {
+            alert('Payment status: ' + status);
+        }
+
+        window.onmessage = function(event){
+
+            if (event.origin !== "https://payment.alikassa.com")
+                return;
+
+            if (event.data === 'paid') {
+                alert('Paid!');
+            }
+
+            if (event.data === 'fail') {
+                alert('Fail (');
+            }
+        };
+
+
+    </script>
+</head>
+
+<body>
+
+<iframe  src="https://payment.alikassa.com/widget?amount=100&merchantUuid=bb50bee-c129-442b-add6-b34cb781f25&orderId=0001&merchantAccountUuid=16a73a7-9b84-473c-b40c-df8cce30e02&customerEmail=example@mail.ru" style="height: 100% !important; width: 100% !important; position: fixed !important; z-index: 9999 !important; border: 0px none !important; inset: 0px !important; max-height: 100% !important;"></iframe>
+
+
+</body>
+
+</html>
